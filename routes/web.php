@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Für jede Route
+Route::get('{reactRoutes}', function () {
+    return view('welcome'); // your start view
+})->where('reactRoutes', '^((?!api).)*$'); // except 'api' word
