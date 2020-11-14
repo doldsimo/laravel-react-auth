@@ -1,3 +1,12 @@
+#Vorrausetzung
+
+- npm install (installieren der node modules)
+- php artisan migrate (usw. zum migrieren der Datenbanken)
+- php artisan serve (starten des dev. Servers)
+- npm run watch oder npm run dev (webpack)
+- XAMPP Server starten (Apache und MySQL)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
