@@ -3,10 +3,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
+import ErrorMessage from "./UI/ErrorMessage";
+
 export default class Reset extends Component {
     state = {
-
+        passwordError: null,
+        passwordConfirmError: null
     }
+
+    setErrorMessages = (data) => {
+        this.setState({
+            passwordError: data.errors.password ? data.errors.password[0] : null,
+            passwordConfirmError: data.errors.password_confirm ? data.errors.password_confirm[0] : null
+        });
+    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -26,9 +37,7 @@ export default class Reset extends Component {
             }
         ).catch(
             err => {
-                this.setState({
-                    message: err.response.data.message
-                })
+                this.setErrorMessages(err.response.data);
             }
         )
     };
@@ -54,10 +63,12 @@ export default class Reset extends Component {
                 <div className="form-group">
                     <label>Passwort</label>
                     <input type="password" className="form-control" placeholder="Passwort" onChange={e => this.password = e.target.value}></input>
+                    <ErrorMessage>{this.state.passwordError}</ErrorMessage>
                 </div>
                 <div className="form-group">
                     <label>Passwort bestätigen</label>
                     <input type="password" className="form-control" placeholder="Passwort bestätigen" onChange={e => this.password_confirm = e.target.value}></input>
+                    <ErrorMessage>{this.state.passwordConfirmError}</ErrorMessage>
                 </div>
                 <button className="btn btn-primary btn-block">Abschicken</button>
             </form>

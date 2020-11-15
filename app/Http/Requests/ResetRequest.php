@@ -29,4 +29,18 @@ class ResetRequest extends FormRequest
             'password_confirm' => 'required|same:password'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'password.required' => 'Gebe bitte ein Passwort ein.',
+            'password_confirm.required' => 'Gebe bitte ein Passwort in das Passwort bestätigen Feld ein.',
+            'password_confirm.same' => 'Passwörter stimmen nicht überein.',
+        ];
+    }
 }

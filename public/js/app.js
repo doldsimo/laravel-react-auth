@@ -70630,6 +70630,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _UI_ErrorMessage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UI/ErrorMessage */ "./resources/js/components/UI/ErrorMessage.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -70658,6 +70659,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Reset = /*#__PURE__*/function (_Component) {
   _inherits(Reset, _Component);
 
@@ -70674,7 +70676,17 @@ var Reset = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {});
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      passwordError: null,
+      passwordConfirmError: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setErrorMessages", function (data) {
+      _this.setState({
+        passwordError: data.errors.password ? data.errors.password[0] : null,
+        passwordConfirmError: data.errors.password_confirm ? data.errors.password_confirm[0] : null
+      });
+    });
 
     _defineProperty(_assertThisInitialized(_this), "handleSubmit", function (e) {
       e.preventDefault();
@@ -70690,9 +70702,7 @@ var Reset = /*#__PURE__*/function (_Component) {
           reset: true
         });
       })["catch"](function (err) {
-        _this.setState({
-          message: err.response.data.message
-        });
+        _this.setErrorMessages(err.response.data);
       });
     });
 
@@ -70730,7 +70740,7 @@ var Reset = /*#__PURE__*/function (_Component) {
         onChange: function onChange(e) {
           return _this2.password = e.target.value;
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ErrorMessage__WEBPACK_IMPORTED_MODULE_3__["default"], null, this.state.passwordError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Passwort best\xE4tigen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
@@ -70739,7 +70749,7 @@ var Reset = /*#__PURE__*/function (_Component) {
         onChange: function onChange(e) {
           return _this2.password_confirm = e.target.value;
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ErrorMessage__WEBPACK_IMPORTED_MODULE_3__["default"], null, this.state.passwordConfirmError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary btn-block"
       }, "Abschicken"));
     }
