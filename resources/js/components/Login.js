@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
+import ErrorMessage from "./UI/ErrorMessage";
 
 export default class Login extends Component {
     state = {
-
+        loggedIn: false
     }
 
     handleSubmit = (e) => {
@@ -30,24 +31,15 @@ export default class Login extends Component {
     }
 
     render() {
-        if (this.state.loggedIn) {
+        if (this.state.loggedIn || this.props.user) {
             return <Redirect to="/" />
         }
 
-        let error = '';
-
-        if (this.state.message) {
-            error = (
-                <div className="alert alert-danger" role="alert">
-                    {this.state.message}
-                </div>
-            );
-        }
 
         return (
             <form onSubmit={this.handleSubmit}>
-                {error}
-                <h3>Anmelden</h3>
+                <ErrorMessage>{this.state.message}</ErrorMessage>
+                <h3>Einloggen</h3>
                 <div className="form-group">
                     <label>Email</label>
                     <input type="email" className="form-control" placeholder="Email" onChange={e => this.email = e.target.value}></input>

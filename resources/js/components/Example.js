@@ -40,8 +40,11 @@ class Example extends Component {
                     <div className="auth-wrapper">
                         <div className="auth-inner">
                             <Switch>
+                                {/* Private Routes */}
                                 <Route exact path="/" component={() => <Home user={this.state.user} />} />
-                                <Route ecact path="/login" component={() => <Login setUser={this.setUser} />} />
+
+                                {/* Public Routes */}
+                                <Route ecact path="/login" component={() => <Login setUser={this.setUser} user={this.state.user} />} />
                                 <Route ecact path="/register" component={Register} />
                                 <Route ecact path="/forgot" component={Forgot} />
                                 <Route ecact path={"/reset/" + ":id"} component={Reset} />

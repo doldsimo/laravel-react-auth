@@ -30,10 +30,10 @@ export default class Navigation extends Component {
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <Link to="/login" className="nav-link">Login</Link>
+                            <Link to="/login" className="nav-link">Einloggen</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/register" className="nav-link">Sign up</Link>
+                            <Link to="/register" className="nav-link">Registrieren</Link>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +43,7 @@ export default class Navigation extends Component {
 
             <nav className="navbar navbar-expand navbar-light fixed-top">
                 <div className="container">
-                    <Link to="/" className="navbar-brand">Home</Link>
+                    <Link to="/" className="navbar-brand">Start</Link>
                     {buttons}
                 </div>
             </nav>

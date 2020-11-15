@@ -21,7 +21,6 @@ class AuthController extends Controller
                 $user = Auth::user();
                 $token = $user->createToken('app')->accessToken;
 
-
                 return response([
                     'message' => 'Eingeloggt',
                     'token' => $token,

@@ -31,4 +31,23 @@ class RegisterRequest extends FormRequest
             'password_confirm' => 'required|same:password',
         ];
     }
+
+    /**
+ * Get the error messages for the defined validation rules.
+ *
+ * @return array
+ */
+public function messages()
+{
+    return [
+        'first_name.required' => 'Geben Sie bitte Ihren Vornamen ein.',
+        'last_name.required' => 'Geben Sie bitte Ihren Nachnamen ein.',
+        'email.required' => 'Geben Sie bitte Ihren Email Adresse ein.',
+        'email.email' => 'Dies ist keine gültige Email Adresse.',
+        'email.unique' => 'Dies Email Adresse ist schon registriert.',
+        'password.required' => 'Geben Sie bitte ein Passwort ein.',
+        'password_confirm.required' => 'Geben Sie bitten ein Passwort in das Passwort bestätigen Feld ein.',
+        'password_confirm.same' => 'Die Passwörter stimmen nicht überein. Überprüfen Sie Ihre Eingaben.',
+    ];
+}
 }
