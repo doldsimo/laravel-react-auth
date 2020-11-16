@@ -11,9 +11,9 @@ import Register from './Register';
 import Forgot from './Forgot';
 import Reset from './Reset';
 import Test from './Test';
-import { PrivateRoute } from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 
-class Example extends Component {
+class Layout extends Component {
     state = {
 
     }
@@ -60,5 +60,5 @@ class Example extends Component {
     }
 }
 
-export default Example;
+export default Layout;
 
