@@ -10,6 +10,8 @@ import Login from './Login';
 import Register from './Register';
 import Forgot from './Forgot';
 import Reset from './Reset';
+import Test from './Test';
+import { PrivateRoute } from './PrivateRoute';
 
 class Example extends Component {
     state = {
@@ -41,7 +43,8 @@ class Example extends Component {
                         <div className="auth-inner">
                             <Switch>
                                 {/* Private Routes */}
-                                <Route exact path="/" component={() => <Home user={this.state.user} />} />
+                                <PrivateRoute exact path="/" component={() => <Home user={this.state.user} />} />
+                                <PrivateRoute exact path="/test" component={() => <Test user={this.state.user} />} />
 
                                 {/* Public Routes */}
                                 <Route ecact path="/login" component={() => <Login setUser={this.setUser} user={this.state.user} />} />
